@@ -1,0 +1,64 @@
+2022-09-28T09:45:12.574+0800	INFO	logger/logger.go:55	logger init success...
+2022-09-28T09:45:12.586+0800	INFO	mysql/mysql.go:34	init mysql success...
+2022-09-28T09:45:12.595+0800	INFO	redis/redis.go:24	redis init success...
+2022-09-28T09:45:12.596+0800	INFO	bluebell/main.go:58	hello world!
+2022-09-28T09:45:43.938+0800	ERROR	controller/user.go:18	BindJSON fail	{"error": "Key: 'SignUpInput.Email' Error:Field validation for 'Email' failed on the 'required' tag\nKey: 'SignUpInput.Age' Error:Field validation for 'Age' failed on the 'gte' tag"}
+2022-09-28T09:45:43.938+0800	INFO	logger/logger.go:105	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "289.6µs"}
+2022-09-28T09:46:13.746+0800	ERROR	controller/user.go:18	BindJSON fail	{"error": "Key: 'SignUpInput.Email' Error:Field validation for 'Email' failed on the 'required' tag"}
+2022-09-28T09:46:13.747+0800	INFO	logger/logger.go:105	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "161.2µs"}
+2022-09-28T09:46:19.159+0800	ERROR	controller/user.go:18	BindJSON fail	{"error": "Key: 'SignUpInput.Email' Error:Field validation for 'Email' failed on the 'email' tag"}
+2022-09-28T09:46:19.161+0800	INFO	logger/logger.go:105	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.6077ms"}
+2022-09-28T09:46:27.877+0800	DEBUG	controller/user.go:27	SignUpInput:&{Username:zpj Password:123456 Email:123@qq.com Age:10}
+2022-09-28T09:46:27.877+0800	INFO	logger/logger.go:105	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "212.5µs"}
+2022-09-28T09:47:02.964+0800	DEBUG	bluebell/main.go:62	close server...	{"signal": "interrupt"}
+2022-09-28T09:47:02.964+0800	INFO	bluebell/main.go:54	svr.ListenAndServe	{"error": "http: Server closed"}
+2022-09-28T09:47:02.965+0800	INFO	bluebell/main.go:68	server exit!
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:20:16.720+0800","C":"bluebell/logger.Init:81","M":"logger init success...","what":123}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:20:16.727+0800","C":"bluebell/dao/mysql.Init:34","M":"init mysql success...","what":123}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:20:16.735+0800","C":"bluebell/dao/redis.Init:24","M":"redis init success...","what":123}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:20:16.735+0800","C":"main.main:58","M":"hello world!","what":123}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:51:54.923+0800","C":"bluebell/logger.GinLogger.func1:136","M":"/","what":123,"status":200,"method":"GET","path":"/","query":"","ip":"127.0.0.1","user-agent":"curl/7.68.0","errors":"","cost":"26µs"}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:52:06.931+0800","C":"bluebell/logger.GinLogger.func1:136","M":"/version","what":123,"status":200,"method":"GET","path":"/version","query":"","ip":"127.0.0.1","user-agent":"curl/7.68.0","errors":"","cost":"27µs"}
+{"L":"\u001b[31mERROR\u001b[0m","T":"2022-09-29T00:52:52.010+0800","C":"bluebell/controller.SignUpHandler:18","M":"BindJSON fail","what":123,"error":"invalid character 'u' looking for beginning of value","S":"bluebell/controller.SignUpHandler\n\t/home/zpj/data/bluebell/controller/user.go:18\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\nbluebell/logger.GinRecovery.func1\n\t/home/zpj/data/bluebell/logger/logger.go:192\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\nbluebell/logger.GinLogger.func1\n\t/home/zpj/data/bluebell/logger/logger.go:133\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\ngithub.com/gin-gonic/gin.(*Engine).handleHTTPRequest\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616\ngithub.com/gin-gonic/gin.(*Engine).ServeHTTP\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572\nnet/http.serverHandler.ServeHTTP\n\t/home/zpj/.gvm/gos/go1.18.3/src/net/http/server.go:2916\nnet/http.(*conn).serve\n\t/home/zpj/.gvm/gos/go1.18.3/src/net/http/server.go:1966"}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:52:52.010+0800","C":"bluebell/logger.GinLogger.func1:136","M":"/sign-up","what":123,"status":200,"method":"POST","path":"/sign-up","query":"","ip":"127.0.0.1","user-agent":"curl/7.68.0","errors":"","cost":"223.7µs"}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:55:55.131+0800","C":"bluebell/logger.GinLogger.func1:136","M":"/sign-up","what":123,"status":200,"method":"POST","path":"/sign-up","query":"","ip":"::1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":"2.4426ms"}
+{"L":"\u001b[31mERROR\u001b[0m","T":"2022-09-29T00:57:03.155+0800","C":"bluebell/controller.SignUpHandler:18","M":"BindJSON fail","what":123,"error":"Key: 'SignUpInput.Age' Error:Field validation for 'Age' failed on the 'gte' tag","S":"bluebell/controller.SignUpHandler\n\t/home/zpj/data/bluebell/controller/user.go:18\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\nbluebell/logger.GinRecovery.func1\n\t/home/zpj/data/bluebell/logger/logger.go:192\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\nbluebell/logger.GinLogger.func1\n\t/home/zpj/data/bluebell/logger/logger.go:133\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\ngithub.com/gin-gonic/gin.(*Engine).handleHTTPRequest\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616\ngithub.com/gin-gonic/gin.(*Engine).ServeHTTP\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572\nnet/http.serverHandler.ServeHTTP\n\t/home/zpj/.gvm/gos/go1.18.3/src/net/http/server.go:2916\nnet/http.(*conn).serve\n\t/home/zpj/.gvm/gos/go1.18.3/src/net/http/server.go:1966"}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:57:03.155+0800","C":"bluebell/logger.GinLogger.func1:136","M":"/sign-up","what":123,"status":200,"method":"POST","path":"/sign-up","query":"","ip":"::1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":"367.7µs"}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:57:38.045+0800","C":"main.main.func1:54","M":"svr.ListenAndServe","what":123,"error":"http: Server closed"}
+{"L":"\u001b[34mINFO\u001b[0m","T":"2022-09-29T00:57:38.046+0800","C":"main.main:68","M":"server exit!","what":123}
+2022-09-29T09:58:44.521+0800	[34mINFO[0m	bluebell/logger.Init:79	logger init success...
+2022-09-29T09:58:44.528+0800	[34mINFO[0m	bluebell/dao/mysql.Init:34	init mysql success...
+2022-09-29T09:58:44.536+0800	[34mINFO[0m	bluebell/dao/redis.Init:24	redis init success...
+2022-09-29T09:58:44.537+0800	[34mINFO[0m	main.main:58	hello world!
+2022-09-29T09:59:27.849+0800	[35mDEBUG[0m	bluebell/controller.SignUpHandler:27	SignUpInput:&{Username:zpj Password:123456 Email:123@qq.com Age:10}
+2022-09-29T09:59:27.887+0800	[34mINFO[0m	bluebell/logic.SignUp:31	new user id:1
+2022-09-29T09:59:27.887+0800	[34mINFO[0m	bluebell/logger.GinLogger.func1:134	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "37.8384ms"}
+2022-09-29T10:00:54.436+0800	[35mDEBUG[0m	bluebell/controller.SignUpHandler:27	SignUpInput:&{Username:zpj Password:123456 Email:123@qq.com Age:10}
+2022-09-29T10:00:54.438+0800	[31mERROR[0m	bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "user:zpj exist", "errorVerbose": "user:zpj exist\nbluebell/logic.SignUp\n\t/home/zpj/data/bluebell/logic/user.go:18\nbluebell/controller.SignUpHandler\n\t/home/zpj/data/bluebell/controller/user.go:28\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\nbluebell/logger.GinRecovery.func1\n\t/home/zpj/data/bluebell/logger/logger.go:190\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\nbluebell/logger.GinLogger.func1\n\t/home/zpj/data/bluebell/logger/logger.go:131\ngithub.com/gin-gonic/gin.(*Context).Next\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173\ngithub.com/gin-gonic/gin.(*Engine).handleHTTPRequest\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616\ngithub.com/gin-gonic/gin.(*Engine).ServeHTTP\n\t/home/zpj/go/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572\nnet/http.serverHandler.ServeHTTP\n\t/home/zpj/.gvm/gos/go1.18.3/src/net/http/server.go:2916\nnet/http.(*conn).serve\n\t/home/zpj/.gvm/gos/go1.18.3/src/net/http/server.go:1966\nruntime.goexit\n\t/home/zpj/.gvm/gos/go1.18.3/src/runtime/asm_amd64.s:1571"}
+2022-09-29T10:00:54.441+0800	[34mINFO[0m	bluebell/logger.GinLogger.func1:134	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "4.6952ms"}
+2022-09-29T10:03:25.707+0800	[35mDEBUG[0m	main.main:62	close server...	{"signal": "interrupt"}
+2022-09-29T10:03:25.707+0800	[34mINFO[0m	main.main.func1:54	svr.ListenAndServe	{"error": "http: Server closed"}
+2022-09-29T10:03:25.708+0800	[34mINFO[0m	main.main:68	server exit!
+2022-09-29T10:03:33.996+0800	[34mINFO[0m	bluebell/logger.Init:79	logger init success...
+2022-09-29T10:03:33.999+0800	[34mINFO[0m	bluebell/dao/mysql.Init:34	init mysql success...
+2022-09-29T10:03:34.000+0800	[34mINFO[0m	bluebell/dao/redis.Init:24	redis init success...
+2022-09-29T10:03:34.002+0800	[34mINFO[0m	main.main:58	hello world!
+2022-09-29T10:03:37.288+0800	[35mDEBUG[0m	bluebell/controller.SignUpHandler:27	SignUpInput:&{Username:zpj Password:123456 Email:123@qq.com Age:10}
+2022-09-29T10:03:37.289+0800	[31mERROR[0m	bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "user:zpj exist"}
+2022-09-29T10:03:37.290+0800	[34mINFO[0m	bluebell/logger.GinLogger.func1:134	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.2993ms"}
+2022-09-29T10:04:12.858+0800	[35mDEBUG[0m	bluebell/controller.SignUpHandler:27	SignUpInput:&{Username:zpj Password:123456 Email:123@qq.com Age:10}
+2022-09-29T10:04:12.860+0800	[31mERROR[0m	bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "user:zpj exist"}
+2022-09-29T10:04:12.860+0800	[34mINFO[0m	bluebell/logger.GinLogger.func1:134	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.5498ms"}
+2022-09-29T10:05:58.220+0800	[35mDEBUG[0m	main.main:62	close server...	{"signal": "interrupt"}
+2022-09-29T10:05:58.221+0800	[34mINFO[0m	main.main.func1:54	svr.ListenAndServe	{"error": "http: Server closed"}
+2022-09-29T10:05:58.222+0800	[34mINFO[0m	main.main:68	server exit!
+2022-09-29T10:06:00.089+0800	[34mINFO[0m	bluebell/logger.Init:79	logger init success...
+2022-09-29T10:06:00.092+0800	[34mINFO[0m	bluebell/dao/mysql.Init:34	init mysql success...
+2022-09-29T10:06:00.093+0800	[34mINFO[0m	bluebell/dao/redis.Init:24	redis init success...
+2022-09-29T10:06:00.094+0800	[34mINFO[0m	main.main:58	hello world!
+2022-09-29T10:06:02.803+0800	[35mDEBUG[0m	bluebell/controller.SignUpHandler:27	SignUpInput:&{Username:zpj Password:123456 Email:123@qq.com Age:10}
+2022-09-29T10:06:02.804+0800	[31mERROR[0m	bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "user:zpj exist"}
+2022-09-29T10:06:02.804+0800	[34mINFO[0m	bluebell/logger.GinLogger.func1:134	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.7135ms"}
+2022-09-29T10:06:15.158+0800	[35mDEBUG[0m	bluebell/controller.SignUpHandler:27	SignUpInput:&{Username:zph Password:123456 Email:456@qq.com Age:10}
+2022-09-29T10:06:15.197+0800	[34mINFO[0m	bluebell/logic.SignUp:30	new user id:2
+2022-09-29T10:06:15.197+0800	[34mINFO[0m	bluebell/logger.GinLogger.func1:134	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "39.3705ms"}
