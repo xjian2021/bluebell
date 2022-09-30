@@ -1,4 +1,4 @@
-module bluebell
+module github.com/xjian2021/bluebell
 
 go 1.18
 

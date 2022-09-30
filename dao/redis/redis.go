@@ -6,7 +6,7 @@ import (
 	"github.com/go-redis/redis"
 	"go.uber.org/zap"
 
-	"bluebell/settings"
+	"github.com/xjian2021/bluebell/settings"
 )
 
 var rdb *redis.Client

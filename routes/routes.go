@@ -5,10 +5,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"bluebell/controller"
-	"bluebell/logger"
-	"bluebell/pkg/snowflake"
-	"bluebell/settings"
+	"github.com/xjian2021/bluebell/controller"
+	"github.com/xjian2021/bluebell/logger"
+	"github.com/xjian2021/bluebell/pkg/snowflake"
+	"github.com/xjian2021/bluebell/settings"
 )
 
 func Setup() *gin.Engine {

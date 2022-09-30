@@ -62,3 +62,10 @@
 2022-09-29T10:06:15.158+0800	[35mDEBUG[0m	bluebell/controller.SignUpHandler:27	SignUpInput:&{Username:zph Password:123456 Email:456@qq.com Age:10}
 2022-09-29T10:06:15.197+0800	[34mINFO[0m	bluebell/logic.SignUp:30	new user id:2
 2022-09-29T10:06:15.197+0800	[34mINFO[0m	bluebell/logger.GinLogger.func1:134	/sign-up	{"status": 200, "method": "POST", "path": "/sign-up", "query": "", "ip": "::1", "user-agent": "apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "39.3705ms"}
+2022-10-01T02:53:19.501+0800	[34mINFO[0m	github.com/xjian2021/bluebell/logger.Init:79	logger init success...
+2022-10-01T02:53:19.599+0800	[34mINFO[0m	github.com/xjian2021/bluebell/dao/mysql.Init:34	init mysql success...
+2022-10-01T02:53:19.621+0800	[34mINFO[0m	github.com/xjian2021/bluebell/dao/redis.Init:24	redis init success...
+2022-10-01T02:53:19.622+0800	[34mINFO[0m	main.main:58	hello world!
+2022-10-01T02:53:21.935+0800	[35mDEBUG[0m	main.main:62	close server...	{"signal": "interrupt"}
+2022-10-01T02:53:21.936+0800	[34mINFO[0m	main.main.func1:54	svr.ListenAndServe	{"error": "http: Server closed"}
+2022-10-01T02:53:21.940+0800	[34mINFO[0m	main.main:68	server exit!

@@ -7,7 +7,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	"go.uber.org/zap"
 
-	"bluebell/settings"
+	"github.com/xjian2021/bluebell/settings"
 )
 
 var db *sqlx.DB

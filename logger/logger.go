@@ -16,7 +16,7 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
-	"bluebell/settings"
+	"github.com/xjian2021/bluebell/settings"
 )
 
 var logger *zap.Logger

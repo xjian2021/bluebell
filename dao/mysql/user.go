@@ -1,6 +1,6 @@
 package mysql
 
-import "bluebell/models"
+import "github.com/xjian2021/bluebell/models"
 
 func CheckUserExist(username string) (bool, error) {
 	sqlStr := "select count(*) from users where username = ?"

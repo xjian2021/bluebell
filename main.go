@@ -11,13 +11,13 @@ import (
 
 	"go.uber.org/zap"
 
-	"bluebell/dao/mysql"
-	"bluebell/dao/redis"
-	"bluebell/logger"
-	"bluebell/pkg/snowflake"
-	validatorPkg "bluebell/pkg/validator-trans"
-	"bluebell/routes"
-	"bluebell/settings"
+	"github.com/xjian2021/bluebell/dao/mysql"
+	"github.com/xjian2021/bluebell/dao/redis"
+	"github.com/xjian2021/bluebell/logger"
+	"github.com/xjian2021/bluebell/pkg/snowflake"
+	validatorPkg "github.com/xjian2021/bluebell/pkg/validator-trans"
+	"github.com/xjian2021/bluebell/routes"
+	"github.com/xjian2021/bluebell/settings"
 )
 
 func main() {

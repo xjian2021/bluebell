@@ -1,10 +1,11 @@
 package logic
 
 import (
-	"bluebell/dao/mysql"
-	"bluebell/models"
-	"bluebell/pkg/snowflake"
 	"fmt"
+
+	"github.com/xjian2021/bluebell/dao/mysql"
+	"github.com/xjian2021/bluebell/models"
+	"github.com/xjian2021/bluebell/pkg/snowflake"
 	"go.uber.org/zap"
 )
 

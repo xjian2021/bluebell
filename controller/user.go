@@ -7,9 +7,9 @@ import (
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 
-	"bluebell/logic"
-	"bluebell/models"
-	validatorPkg "bluebell/pkg/validator-trans"
+	"github.com/xjian2021/bluebell/logic"
+	"github.com/xjian2021/bluebell/models"
+	validatorPkg "github.com/xjian2021/bluebell/pkg/validator-trans"
 )
 
 func SignUpHandler(c *gin.Context) {
