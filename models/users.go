@@ -2,10 +2,10 @@ package models
 
 type (
 	User struct {
-		UserID   int64  `db:"user_id"`
-		Username string `db:"username"`
-		Password string `db:"password"`
-		Email    string `db:"email"`
-		Gender   string `db:"gender"`
+		UserID   int64  `db:"user_id,omitempty"`
+		Username string `db:"username,omitempty"`
+		Password string `db:"password,omitempty"`
+		Email    string `db:"email,omitempty"`
+		Gender   string `db:"gender,omitempty"`
 	}
 )

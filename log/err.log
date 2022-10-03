@@ -5,3 +5,13 @@
 2022-09-29T10:03:37.289+0800	[31mERROR[0m	bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "user:zpj exist"}
 2022-09-29T10:04:12.860+0800	[31mERROR[0m	bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "user:zpj exist"}
 2022-09-29T10:06:02.804+0800	[31mERROR[0m	bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "user:zpj exist"}
+2022-10-02T22:42:09.822+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.SignUpHandler:29	SignUp fail	{"error": "AddUser newUser:{UserID:2396330836103168 Username:zph Password:123456\ufffd\u001d\ufffdُ\u0000\ufffd\u0004\ufffd\ufffd\t\ufffd\ufffd\ufffdB~ Email:123@qq.com Gender:} err:Error 1366: Incorrect string value: '\\xD4\\x1D\\x8C\\xD9\\x8F\\x00...' for column 'password' at row 1"}
+2022-10-03T15:36:23.065+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:36	/sign-up-1 -> handler fail err:用户已存在
+2022-10-03T15:36:50.492+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:36	/sign-up-2 -> handler fail err:用户已存在
+2022-10-03T15:40:06.428+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:27	/login::1 -> BindJSON fail err:invalid character '}' looking for beginning of object key string
+2022-10-03T15:40:18.862+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::2 -> handler fail err:nil pointer passed to StructScan destination
+2022-10-03T15:42:08.664+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:scannable dest type ptr with >1 columns (3) in result
+2022-10-03T15:43:55.594+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:expected slice but got ptr
+2022-10-03T15:48:39.344+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:scannable dest type ptr with >1 columns (3) in result
+2022-10-03T15:51:06.715+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:密码错误
+2022-10-03T15:51:47.898+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:密码错误

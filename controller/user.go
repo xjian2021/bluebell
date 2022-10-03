@@ -1,34 +1,34 @@
 package controller
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 
 	"github.com/xjian2021/bluebell/logic"
 	"github.com/xjian2021/bluebell/models"
-	validatorPkg "github.com/xjian2021/bluebell/pkg/validator-trans"
 )
 
 func SignUpHandler(c *gin.Context) {
+	repID := c.Value(ReqKey)
 	input := &models.SignUpInput{}
-	if err := c.ShouldBindJSON(input); err != nil {
-		zap.L().Error("BindJSON fail", zap.Error(err))
-		errors, ok := err.(validator.ValidationErrors)
-		if ok {
-			c.JSON(http.StatusOK, gin.H{"code": 0, "msg": errors.Translate(validatorPkg.Trans)})
-			return
-		}
-		c.JSON(http.StatusOK, gin.H{"code": 0, "msg": err.Error()})
+	if err := AuthBindJson(c, input); err != nil {
+		zap.S().Errorf("%s -> BindJSON fail err:%s", repID, err.Error())
 		return
 	}
-	zap.S().Debugf("SignUpInput:%+v", input)
-	if err := logic.SignUp(input); err != nil {
-		zap.L().Error("SignUp fail", zap.Error(err))
-		c.JSON(http.StatusOK, gin.H{"code": 0, "msg": err.Error()})
+	zap.S().Debugf("%s -> SignUpInput:%+v", repID, input)
+	err := logic.SignUp(input)
+	HandleError(c, err)
+}
+
+func LoginHandler(c *gin.Context) {
+	repID := c.Value(ReqKey)
+	input := &models.LoginInput{}
+	if err := AuthBindJson(c, input); err != nil {
+		zap.S().Errorf("%s -> BindJSON fail err:%s", repID, err.Error())
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"code": 1})
+	zap.S().Debugf("%s -> LoginInput:%+v", repID, input)
+
+	output, err := logic.Login(input)
+	HandleOutput(c, output, err)
 }

@@ -23,6 +23,7 @@ func Setup() *gin.Engine {
 			gin.H{"msg_id": snowflake.GenID(), "msg": "path not found"},
 		)
 	})
-	r.POST("/sign-up", controller.SignUpHandler)
+	r.POST("/sign-up", controller.LoadApiMeta, controller.SignUpHandler, controller.Response)
+	r.POST("/login", controller.LoadApiMeta, controller.LoginHandler, controller.Response)
 	return r
 }

@@ -3,25 +3,24 @@ package logic
 import (
 	"fmt"
 
+	"go.uber.org/zap"
+
 	"github.com/xjian2021/bluebell/dao/mysql"
 	"github.com/xjian2021/bluebell/models"
+	"github.com/xjian2021/bluebell/pkg/errorcode"
 	"github.com/xjian2021/bluebell/pkg/snowflake"
-	"go.uber.org/zap"
+	"github.com/xjian2021/bluebell/pkg/utils"
 )
 
 func SignUp(input *models.SignUpInput) (err error) {
-	exist, err := mysql.CheckUserExist(input.Username)
-	if err != nil {
-		return fmt.Errorf("CheckUserExist username:%s err:%s", input.Username, err.Error())
-	}
-	if exist {
-		return fmt.Errorf("user:%s exist", input.Username)
+	if err = mysql.CheckUserExist(input.Username); err != nil {
+		return err
 	}
 	userID := snowflake.GenID()
-	newUser := models.User{
+	newUser := &models.User{
 		UserID:   userID,
 		Username: input.Username,
-		Password: input.Password,
+		Password: utils.Md5(input.Password),
 		Email:    input.Email,
 	}
 	id, err := mysql.AddUser(newUser)
@@ -30,4 +29,21 @@ func SignUp(input *models.SignUpInput) (err error) {
 	}
 	zap.S().Infof("new user id:%d", id)
 	return nil
+}
+
+func Login(input *models.LoginInput) (output *models.LoginResData, err error) {
+	user, err := mysql.GetUserByUsername(input.Username)
+	if err != nil {
+		return nil, err
+	}
+	if user.Password != utils.Md5(input.Password) {
+		return nil, errorcode.CodeInvalidPassword
+	}
+
+	return &models.LoginResData{
+		Token:    "",
+		Username: input.Username,
+		Email:    user.Email,
+		UserID:   user.UserID,
+	}, nil
 }
