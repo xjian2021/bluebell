@@ -3,7 +3,7 @@ package models
 type (
 	ResponseData struct {
 		Code int64       `json:"code"`
-		Msg  interface{} `json:"msg,omitempty"`
+		Msg  string      `json:"msg,omitempty"`
 		Data interface{} `json:"data,omitempty"`
 	}
 

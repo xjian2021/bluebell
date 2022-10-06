@@ -8,6 +8,7 @@ import (
 	"github.com/xjian2021/bluebell/dao/mysql"
 	"github.com/xjian2021/bluebell/models"
 	"github.com/xjian2021/bluebell/pkg/errorcode"
+	"github.com/xjian2021/bluebell/pkg/jwt"
 	"github.com/xjian2021/bluebell/pkg/snowflake"
 	"github.com/xjian2021/bluebell/pkg/utils"
 )
@@ -40,8 +41,13 @@ func Login(input *models.LoginInput) (output *models.LoginResData, err error) {
 		return nil, errorcode.CodeInvalidPassword
 	}
 
+	token, err := jwt.GenToken(user.UserID, input.Username)
+	if err != nil {
+		return nil, err
+	}
+
 	return &models.LoginResData{
-		Token:    "",
+		Token:    token,
 		Username: input.Username,
 		Email:    user.Email,
 		UserID:   user.UserID,

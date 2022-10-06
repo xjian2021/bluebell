@@ -15,3 +15,20 @@
 2022-10-03T15:48:39.344+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:scannable dest type ptr with >1 columns (3) in result
 2022-10-03T15:51:06.715+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:密码错误
 2022-10-03T15:51:47.898+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:密码错误
+2022-10-03T20:38:58.756+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:36	/sign-up::1 -> handler fail err:用户已存在
+2022-10-03T20:39:42.074+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::2 -> handler fail err:密码错误
+2022-10-03T20:48:54.573+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::1 -> handler fail err:密码错误
+2022-10-03T20:48:59.789+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:36		/sign-up::2 -> handler fail err:用户已存在
+2022-10-05T21:42:59.265+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:54	/login::2 -> handler fail err:密码错误
+2022-10-06T12:30:52.091+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:27	/login::1 -> BindJSON fail err:Key: 'LoginInput.Username' Error:Field validation for 'Username' failed on the 'required' tag
+Key: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag
+2022-10-06T12:31:02.151+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:27	/login::2 -> BindJSON fail err:Key: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag
+2022-10-06T12:36:10.020+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:27	/login::3 -> BindJSON fail err:Key: 'LoginInput.Username' Error:Field validation for 'Username' failed on the 'required' tag
+Key: 'LoginInput.Password' Error:Field validation for 'Password' failed on the 'required' tag
+2022-10-06T12:48:12.239+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:30	/login::1 -> BindJSON fail err:LoginInput.Username: Username为必填字段
+LoginInput.Password: Password为必填字段
+2022-10-06T12:49:20.064+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:30	/login::1 -> BindJSON fail err:LoginInput.Username: Username为必填字段
+LoginInput.Password: Password为必填字段
+
+2022-10-06T12:49:56.767+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:30	/login::1 -> BindJSON fail err:LoginInput.Username: Username为必填字段; LoginInput.Password: Password为必填字段;
+2022-10-06T12:50:52.702+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::2 -> handler fail err:密码错误

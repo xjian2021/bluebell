@@ -6,22 +6,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 
+	"github.com/xjian2021/bluebell/middlewares"
 	"github.com/xjian2021/bluebell/models"
 	"github.com/xjian2021/bluebell/pkg/errorcode"
 )
 
-const (
-	ReqKey  = "req-key"
-	CodeKey = "code-key"
-	MsgKey  = "msg-key"
-	DataKey = "data-keyt"
-)
-
-func Response(c *gin.Context) {
-	data := c.Value(DataKey)
-	code := c.Value(CodeKey).(errorcode.Code)
-	msg, exits := c.Get(MsgKey)
-	if !exits || msg == "" {
+func Response(c *gin.Context, code errorcode.Code, msg string, data interface{}) {
+	if msg == "" {
 		msg = code.Error()
 	}
 	c.JSON(http.StatusOK, models.ResponseData{
@@ -29,49 +20,39 @@ func Response(c *gin.Context) {
 		Msg:  msg,
 		Data: data,
 	})
+	c.Abort()
 }
 
 func HandleError(c *gin.Context, err error) {
+	var (
+		code = errorcode.CodeSuccess
+		msg  string
+	)
 	if err != nil {
-		zap.S().Errorf("%s -> handler fail err:%s", c.Value(ReqKey), err.Error())
+		zap.S().Errorf("\t%s -> handler fail err:%s", c.Value(middlewares.ReqKey), err.Error())
 		if e, ok := err.(errorcode.Code); ok {
-			c.Set(CodeKey, e)
+			code = e
 		} else {
-			SetCodeMsg(c, errorcode.CodeUnknownError, "操作失败")
+			code = errorcode.CodeUnknownError
+			msg = "操作失败"
 		}
-		return
 	}
-	c.Set(CodeKey, errorcode.CodeSuccess)
+	Response(c, code, msg, nil)
 }
 
 func HandleOutput(c *gin.Context, output interface{}, err error) {
 	var (
-		errCode = errorcode.CodeSuccess
-		msg     string
+		code = errorcode.CodeSuccess
+		msg  string
 	)
 	if err != nil {
-		zap.S().Errorf("%s -> handler fail err:%s", c.Value(ReqKey), err.Error())
+		zap.S().Errorf("%s -> handler fail err:%s", c.Value(middlewares.ReqKey), err.Error())
 		if e, ok := err.(errorcode.Code); ok {
-			errCode = e
+			code = e
 		} else {
-			errCode = errorcode.CodeUnknownError
+			code = errorcode.CodeUnknownError
 			msg = "操作失败"
 		}
 	}
-	SetCodeMsgData(c, errCode, msg, output)
-}
-
-func SetCodeMsg(c *gin.Context, code errorcode.Code, msg interface{}) {
-	c.Set(CodeKey, code)
-	c.Set(MsgKey, msg)
-}
-
-func SetCodeData(c *gin.Context, code errorcode.Code, data interface{}) {
-	c.Set(CodeKey, code)
-	c.Set(DataKey, data)
-}
-func SetCodeMsgData(c *gin.Context, code errorcode.Code, msg, data interface{}) {
-	c.Set(CodeKey, code)
-	c.Set(MsgKey, msg)
-	c.Set(DataKey, data)
+	Response(c, code, msg, output)
 }

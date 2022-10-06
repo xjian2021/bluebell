@@ -7,6 +7,7 @@ import (
 
 	"github.com/xjian2021/bluebell/controller"
 	"github.com/xjian2021/bluebell/logger"
+	"github.com/xjian2021/bluebell/middlewares"
 	"github.com/xjian2021/bluebell/pkg/snowflake"
 	"github.com/xjian2021/bluebell/settings"
 )
@@ -20,10 +21,10 @@ func Setup() *gin.Engine {
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(
 			http.StatusOK,
-			gin.H{"msg_id": snowflake.GenID(), "msg": "path not found"},
+			gin.H{"msg_id": snowflake.GenID(), "msg": "api not found"},
 		)
 	})
-	r.POST("/sign-up", controller.LoadApiMeta, controller.SignUpHandler, controller.Response)
-	r.POST("/login", controller.LoadApiMeta, controller.LoginHandler, controller.Response)
+	r.POST("/sign-up", middlewares.LoadApiMeta, controller.SignUpHandler)
+	r.POST("/login", middlewares.LoadApiMeta, controller.LoginHandler)
 	return r
 }
