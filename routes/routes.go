@@ -26,5 +26,8 @@ func Setup() *gin.Engine {
 	})
 	r.POST("/sign-up", middlewares.LoadApiMeta, controller.SignUpHandler)
 	r.POST("/login", middlewares.LoadApiMeta, controller.LoginHandler)
+	r.POST("/login", middlewares.LoadApiMeta, middlewares.JwtAuth(), func(c *gin.Context) {
+		c.String(http.StatusOK, "ok")
+	})
 	return r
 }
