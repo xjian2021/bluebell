@@ -11,6 +11,11 @@ import (
 	validatorPkg "github.com/xjian2021/bluebell/pkg/validator-trans"
 )
 
+const (
+	ReqKey    = "req-key"
+	UserIDKey = "userID-key"
+)
+
 func AuthBindJson(c *gin.Context, input interface{}) (err error) {
 	err = c.ShouldBindJSON(input)
 	if err != nil {

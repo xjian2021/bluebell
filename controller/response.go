@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 
-	"github.com/xjian2021/bluebell/middlewares"
 	"github.com/xjian2021/bluebell/models"
 	"github.com/xjian2021/bluebell/pkg/errorcode"
 )
@@ -29,7 +28,7 @@ func HandleError(c *gin.Context, err error) {
 		msg  string
 	)
 	if err != nil {
-		zap.S().Errorf("\t%s -> handler fail err:%s", c.Value(middlewares.ReqKey), err.Error())
+		zap.S().Errorf("\t%s -> handler fail err:%s", c.Value(ReqKey), err.Error())
 		if e, ok := err.(errorcode.Code); ok {
 			code = e
 		} else {
@@ -46,7 +45,7 @@ func HandleOutput(c *gin.Context, output interface{}, err error) {
 		msg  string
 	)
 	if err != nil {
-		zap.S().Errorf("%s -> handler fail err:%s", c.Value(middlewares.ReqKey), err.Error())
+		zap.S().Errorf("%s -> handler fail err:%s", c.Value(ReqKey), err.Error())
 		if e, ok := err.(errorcode.Code); ok {
 			code = e
 		} else {

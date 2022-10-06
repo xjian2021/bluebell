@@ -8,7 +8,7 @@ const (
 	CodeUserExist                          // 用户已存在
 	CodeUserNotExist                       // 用户不存在
 	CodeInvalidPassword                    // 密码错误
-
+	CodeInvalidToken                       // 无效token
 )
 
 type (

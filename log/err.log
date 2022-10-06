@@ -32,3 +32,7 @@ LoginInput.Password: Password为必填字段
 
 2022-10-06T12:49:56.767+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.LoginHandler:30	/login::1 -> BindJSON fail err:LoginInput.Username: Username为必填字段; LoginInput.Password: Password为必填字段;
 2022-10-06T12:50:52.702+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:53	/login::2 -> handler fail err:密码错误
+2022-10-07T00:28:57.822+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:32		/auth-token::2 -> handler fail err:无效token
+2022-10-07T00:30:27.942+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:32		/auth-token::1 -> handler fail err:无效token
+2022-10-07T00:32:43.029+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:32		/auth-token::1 -> handler fail err:无效token
+2022-10-07T00:34:03.653+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:32		/auth-token::1 -> handler fail err:无效token

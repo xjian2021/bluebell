@@ -5,13 +5,12 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/xjian2021/bluebell/logic"
-	"github.com/xjian2021/bluebell/middlewares"
 	"github.com/xjian2021/bluebell/models"
 	"github.com/xjian2021/bluebell/pkg/errorcode"
 )
 
 func SignUpHandler(c *gin.Context) {
-	repID := c.Value(middlewares.ReqKey)
+	repID := c.Value(ReqKey)
 	input := &models.SignUpInput{}
 	if err := AuthBindJson(c, input); err != nil {
 		zap.S().Errorf("%s -> BindJSON fail err:%s", repID, err.Error())
@@ -25,7 +24,7 @@ func SignUpHandler(c *gin.Context) {
 }
 
 func LoginHandler(c *gin.Context) {
-	repID := c.Value(middlewares.ReqKey)
+	repID := c.Value(ReqKey)
 	input := &models.LoginInput{}
 	if err := AuthBindJson(c, input); err != nil {
 		zap.S().Errorf("%s -> BindJSON fail err:%s", repID, err.Error())
