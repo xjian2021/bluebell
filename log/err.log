@@ -36,3 +36,5 @@ LoginInput.Password: Password为必填字段
 2022-10-07T00:30:27.942+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:32		/auth-token::1 -> handler fail err:无效token
 2022-10-07T00:32:43.029+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:32		/auth-token::1 -> handler fail err:无效token
 2022-10-07T00:34:03.653+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleError:32		/auth-token::1 -> handler fail err:无效token
+2022-10-09T23:54:46.987+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.HandleOutput:48	/api/v1/login::1 -> handler fail err:sql: no rows in result set
+2022-10-10T00:19:21.439+0800	[31mERROR[0m	github.com/xjian2021/bluebell/controller.SignUpHandler:16	/api/v1/sign-up::4 -> BindJSON fail err:SignUpInput.Email: Email为必填字段; SignUpInput.Age: Age必须大于或等于1;

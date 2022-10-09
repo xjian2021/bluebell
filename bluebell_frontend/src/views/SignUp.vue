@@ -41,7 +41,7 @@ export default {
     submit() {
       this.$axios({
         method: 'post',
-        url: '/signup',
+        url: '/sign-up',
         data: JSON.stringify({
           username: this.username,
           password: this.password,
@@ -49,7 +49,7 @@ export default {
         })
       }).then((res) => {
         console.log(res.data);
-        if (res.code == 1000) {
+        if (res.code == 1) {
           console.log('signup success');
           this.$router.push({name: "Login"});
         } else {
