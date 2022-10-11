@@ -143,7 +143,7 @@ export default {
   top: 0;
   width: 40px;
   border-left: 4px solid transparent;
-/ / background: #f8f9fa;
+// background: #f8f9fa;
 
 .text {
   color: #1a1a1b;
@@ -211,7 +211,7 @@ export default {
 
 .line {
   border-right: 2px solid #edeff1;
-/ / width: 20 px;
+// width: 20 px;
   height: 100%;
   position: absolute;
   left: 20px;
@@ -271,7 +271,7 @@ export default {
 
 .topic-info {
   width: 100%;
-/ / padding: 12 px;
+// padding: 12 px;
   cursor: pointer;
   background-color: #ffffff;
   color: #1a1a1b;
