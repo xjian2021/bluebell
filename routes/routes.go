@@ -31,6 +31,7 @@ func Setup() *gin.Engine {
 	g.Use(middlewares.JwtAuth())
 	{
 		g.GET("/community", controller.CommunityHandler)
+		g.POST("/post", controller.PostHandler)
 	}
 	return r
 }

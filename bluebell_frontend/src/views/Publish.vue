@@ -88,17 +88,17 @@ export default {
           community_id: this.selectCommunity.id
         })
       })
-          .then(response => {
-            console.log(response.data);
-            if (response.code == 1) {
-              this.$router.push({path: this.redirect || "/"});
-            } else {
-              console.log(response.msg);
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          });
+      .then(response => {
+        console.log(response.data);
+        if (response.code == 1) {
+          this.$router.push({path: this.redirect || "/"});
+        } else {
+          console.log(response.msg);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
     },
     getCommunityList() {
       this.$axios({

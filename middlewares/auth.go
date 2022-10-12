@@ -2,11 +2,11 @@ package middlewares
 
 import (
 	"fmt"
-	"go.uber.org/zap"
 	"strings"
 	"sync/atomic"
 
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 
 	"github.com/xjian2021/bluebell/controller"
 	"github.com/xjian2021/bluebell/pkg/errorcode"
@@ -26,7 +26,7 @@ func JwtAuth() func(c *gin.Context) {
 		// 这里假设Token放在Header的Authorization中，并使用Bearer开头
 		// 这里的具体实现方式要依据你的实际业务情况决定
 		authHeader := c.Request.Header.Get("Authorization")
-		zap.S().Debugf("%s -> Authorization token:%s", c.Value(controller.ReqKey), authHeader)
+		zap.S().Debugf("%s -> Authorization", c.Value(controller.ReqKey))
 		if authHeader == "" {
 			controller.HandleError(c, errorcode.CodeInvalidToken)
 			return

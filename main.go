@@ -55,7 +55,7 @@ func main() {
 		}
 	}()
 
-	zap.L().Info("hello world!")
+	//zap.L().Info("hello world!")
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	s := <-quit
