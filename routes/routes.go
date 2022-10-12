@@ -14,7 +14,7 @@ import (
 
 func Setup() *gin.Engine {
 	r := gin.New()
-	r.Use(logger.GinLogger(), logger.GinRecovery(true))
+	r.Use(logger.GinLogger(), logger.GinRecovery(true), middlewares.LoadApiMeta)
 	g := r.Group("/api/v1")
 	g.GET("/version", func(c *gin.Context) {
 		c.String(http.StatusOK, "version:%s", settings.C.Version)
@@ -25,10 +25,12 @@ func Setup() *gin.Engine {
 			gin.H{"msg_id": snowflake.GenID(), "msg": "api not found"},
 		)
 	})
-	g.POST("/sign-up", middlewares.LoadApiMeta, controller.SignUpHandler)
-	g.POST("/login", middlewares.LoadApiMeta, controller.LoginHandler)
-	g.POST("/auth-token", middlewares.LoadApiMeta, middlewares.JwtAuth(), func(c *gin.Context) {
-		c.String(http.StatusOK, "ok userID:%v", c.Value(controller.UserIDKey))
-	})
+	g.POST("/sign-up", controller.SignUpHandler)
+	g.POST("/login", controller.LoginHandler)
+
+	g.Use(middlewares.JwtAuth())
+	{
+		g.GET("/community", controller.CommunityHandler)
+	}
 	return r
 }

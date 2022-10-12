@@ -90,7 +90,7 @@ export default {
       })
           .then(response => {
             console.log(response.data);
-            if (response.code == 1000) {
+            if (response.code == 1) {
               this.$router.push({path: this.redirect || "/"});
             } else {
               console.log(response.msg);
@@ -107,7 +107,7 @@ export default {
       })
           .then(response => {
             console.log(response.data);
-            if (response.code == 1000) {
+            if (response.code == 1) {
               this.communityList = response.data;
             } else {
               console.log(response.msg);
