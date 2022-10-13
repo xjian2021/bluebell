@@ -12,4 +12,11 @@ type (
 		Username string `json:"username" binding:"required"`
 		Password string `json:"password" binding:"required"`
 	}
+
+	CreatePost struct {
+		Title       string `json:"title" binding:"required"`
+		Content     string `json:"content" binding:"required"`
+		CommunityID int64  `json:"community_id" binding:"required"`
+		AuthorID    int64
+	}
 )

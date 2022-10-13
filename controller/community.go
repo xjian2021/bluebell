@@ -13,7 +13,3 @@ func CommunityHandler(c *gin.Context) {
 	output, err := logic.GetCommunityList()
 	HandleOutput(c, output, err)
 }
-
-func PostHandler(c *gin.Context) {
-
-}

@@ -33,3 +33,7 @@ func AuthBindJson(c *gin.Context, input interface{}) (err error) {
 	}
 	return
 }
+
+func GetCurrenUserID(c *gin.Context) (userID int64) {
+	return c.Value(UserIDKey).(int64)
+}
