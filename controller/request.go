@@ -17,7 +17,14 @@ const (
 )
 
 func AuthBindJson(c *gin.Context, input interface{}) (err error) {
-	err = c.ShouldBindJSON(input)
+	return authErrorHandler(c.ShouldBindJSON(input))
+}
+
+func AuthBindQuery(c *gin.Context, input interface{}) (err error) {
+	return authErrorHandler(c.ShouldBindQuery(input))
+}
+
+func authErrorHandler(err error) error {
 	if err != nil {
 		ves, ok := err.(validator.ValidationErrors)
 		if ok {
@@ -31,7 +38,7 @@ func AuthBindJson(c *gin.Context, input interface{}) (err error) {
 			err = errors.New(strings.TrimSpace(buff.String()))
 		}
 	}
-	return
+	return err
 }
 
 func GetCurrenUserID(c *gin.Context) (userID int64) {

@@ -1,6 +1,10 @@
 package mysql
 
-import "github.com/xjian2021/bluebell/models"
+import (
+	"database/sql"
+
+	"github.com/xjian2021/bluebell/models"
+)
 
 func CreatePost(post *models.Post) (newID int64, err error) {
 	sqlStr := "insert into post( post_id, title, content, author_id, community_id) VALUES (?,?,?,?,?)"
@@ -9,4 +13,13 @@ func CreatePost(post *models.Post) (newID int64, err error) {
 		return 0, err
 	}
 	return result.LastInsertId()
+}
+
+func PostList(lastPostID, limit int64) (output []*models.Post, err error) {
+	sqlStr := "select post_id,community_id,title,content from post where post_id > ? limit ?"
+	err = db.Select(&output, sqlStr, lastPostID, limit)
+	if err == sql.ErrNoRows {
+		err = nil
+	}
+	return
 }

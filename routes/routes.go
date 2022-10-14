@@ -32,7 +32,7 @@ func Setup() *gin.Engine {
 	{
 		g.GET("/community", controller.CommunityHandler)
 		g.POST("/post", controller.CreatePostHandler)
-		g.GET("/posts2", controller.PostListHandler)
+		g.GET("/posts", controller.PostListHandler)
 	}
 	return r
 }

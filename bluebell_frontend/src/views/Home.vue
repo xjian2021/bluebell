@@ -117,7 +117,8 @@ export default {
   data() {
     return {
       order: "time",
-      page: 1,
+      lastPostID: 0,
+      limit: 10,
       postList: []
     };
   },
@@ -135,9 +136,10 @@ export default {
     getPostList() {
       this.$axios({
         method: "get",
-        url: "/posts2",
+        url: "/posts",
         params: {
-          page: this.page,
+          last_post_id: this.lastPostID,
+          limit: this.limit,
           order: this.order,
         }
       })
@@ -145,6 +147,9 @@ export default {
             console.log(response.data, 222);
             if (response.code == 1) {
               this.postList = response.data;
+              let lastPost = response.data[response.data.length - 1]
+              console.log("最后post", lastPost);
+              this.lastPostID = lastPost.id
             } else {
               console.log(response.msg);
             }

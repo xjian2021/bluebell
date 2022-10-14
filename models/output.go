@@ -13,4 +13,8 @@ type (
 		Email    string `json:"email,omitempty"`
 		UserID   int64  `json:"user_id,omitempty"`
 	}
+
+	PostListResData struct {
+		Data []*Post `json:"data"`
+	}
 )

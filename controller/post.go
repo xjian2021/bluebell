@@ -11,7 +11,7 @@ import (
 
 func CreatePostHandler(c *gin.Context) {
 	repID := c.Value(ReqKey)
-	input := &models.CreatePost{}
+	input := &models.CreatePostInput{}
 	if err := AuthBindJson(c, input); err != nil {
 		zap.S().Errorf("%s -> BindJSON fail err:%s", repID, err.Error())
 		Response(c, errorcode.CodeInvalidParam, err.Error(), nil)
@@ -25,5 +25,14 @@ func CreatePostHandler(c *gin.Context) {
 }
 
 func PostListHandler(c *gin.Context) {
-
+	repID := c.Value(ReqKey)
+	input := &models.PostListInput{}
+	if err := AuthBindQuery(c, input); err != nil {
+		zap.S().Errorf("%s -> BindJSON fail err:%s", repID, err.Error())
+		Response(c, errorcode.CodeInvalidParam, err.Error(), nil)
+		return
+	}
+	zap.S().Debugf("%s -> PostList:%+v", repID, input)
+	output, err := logic.PostList(input)
+	HandleOutput(c, output, err)
 }

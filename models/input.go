@@ -13,10 +13,15 @@ type (
 		Password string `json:"password" binding:"required"`
 	}
 
-	CreatePost struct {
+	CreatePostInput struct {
 		Title       string `json:"title" binding:"required"`
 		Content     string `json:"content" binding:"required"`
 		CommunityID int64  `json:"community_id" binding:"required"`
 		AuthorID    int64
+	}
+
+	PostListInput struct {
+		LastPostID int64 `json:"last_post_id" form:"last_post_id" binding:"gte=0"`
+		Limit      int64 `json:"limit" form:"limit" binding:"gt=0,lte=20"`
 	}
 )

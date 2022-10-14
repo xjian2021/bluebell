@@ -9,7 +9,7 @@ import (
 	"github.com/xjian2021/bluebell/pkg/snowflake"
 )
 
-func CreatePost(input *models.CreatePost) (err error) {
+func CreatePost(input *models.CreatePostInput) (err error) {
 	postID := snowflake.GenID()
 	newPost := &models.Post{
 		ID:          postID,
@@ -24,4 +24,9 @@ func CreatePost(input *models.CreatePost) (err error) {
 	}
 	zap.S().Infof("new post id:%d", id)
 	return nil
+}
+
+func PostList(input *models.PostListInput) (output interface{}, err error) {
+	output, err = mysql.PostList(input.LastPostID, input.Limit)
+	return
 }
