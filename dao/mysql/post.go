@@ -15,6 +15,10 @@ func CreatePost(post *models.Post) (newID int64, err error) {
 	return result.LastInsertId()
 }
 
+func GetPostDetail(postID int64) {
+
+}
+
 func PostList(lastPostID, limit int64) (output []*models.Post, err error) {
 	sqlStr := "select post_id,community_id,title,content from post where post_id > ? limit ?"
 	err = db.Select(&output, sqlStr, lastPostID, limit)

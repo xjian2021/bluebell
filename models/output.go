@@ -17,4 +17,10 @@ type (
 	PostListResData struct {
 		Data []*Post `json:"data"`
 	}
+
+	PostDetailResData struct {
+		Title         string `json:"title"`
+		Content       string `json:"content"`
+		CommunityName string `json:"community_name"`
+	}
 )

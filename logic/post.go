@@ -26,7 +26,12 @@ func CreatePost(input *models.CreatePostInput) (err error) {
 	return nil
 }
 
-func PostList(input *models.PostListInput) (output interface{}, err error) {
-	output, err = mysql.PostList(input.LastPostID, input.Limit)
-	return
+func PostDetail(id int64) (output *models.PostDetailResData, err error) {
+	// TODO 联合查询
+
+	return nil, err
+}
+
+func PostList(input *models.PostListInput) (output []*models.Post, err error) {
+	return mysql.PostList(input.LastPostID, input.Limit)
 }

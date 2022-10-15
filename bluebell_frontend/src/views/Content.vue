@@ -12,7 +12,7 @@
           </a>
         </div>
         <div class="l-container">
-          <h4 class="con-title">{{ post.title }}</h4>
+            <h4 class="con-title">{{ post.title }}</h4>
           <div class="con-info">{{ post.content }}</div>
           <div class="user-btn">
             <span class="btn-item">
@@ -83,7 +83,7 @@ export default {
       })
           .then(response => {
             console.log(1, response.data);
-            if (response.code == 1000) {
+            if (response.code == 1) {
               this.post = response.data;
             } else {
               console.log(response.msg);
