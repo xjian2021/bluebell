@@ -1,6 +1,7 @@
 package mysql
 
 import (
+	"database/sql"
 	"github.com/xjian2021/bluebell/models"
 	"github.com/xjian2021/bluebell/pkg/errorcode"
 )
@@ -30,5 +31,8 @@ func GetUserByUsername(username string) (user *models.User, err error) {
 	user = &models.User{}
 	sqlStr := "select email,user_id, password from users where username = ?"
 	err = db.Get(user, sqlStr, username)
+	if err == sql.ErrNoRows {
+		err = errorcode.CodeUserNotExist
+	}
 	return user, err
 }

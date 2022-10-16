@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/xjian2021/bluebell/models"
+	"github.com/xjian2021/bluebell/pkg/errorcode"
 )
 
 func GetCommunityList() (output []*models.Community, err error) {
@@ -20,7 +21,7 @@ func GetCommunityDetail(id int64) (output *models.Community, err error) {
 	sqlStr := "select community_id,community_name,introduction from community where community_id = ?"
 	err = db.Get(output, sqlStr, id)
 	if err == sql.ErrNoRows {
-		err = nil
+		err = errorcode.CodeInvalidID
 	}
 	return
 }

@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type (
 	ResponseData struct {
 		Code int64       `json:"code"`
@@ -19,8 +21,13 @@ type (
 	}
 
 	PostDetailResData struct {
-		Title         string `json:"title"`
-		Content       string `json:"content"`
-		CommunityName string `json:"community_name"`
+		ID            int64     `json:"id,string" db:"post_id"`
+		Status        int32     `json:"status" db:"status"`
+		Title         string    `json:"title" db:"title"`
+		Content       string    `json:"content" db:"content"`
+		Username      string    `json:"author_username" db:"username"`
+		CommunityName string    `json:"community_name" db:"community_name"`
+		Introduction  string    `json:"introduction" db:"introduction"`
+		CreateTime    time.Time `json:"create_time" db:"create_time"`
 	}
 )

@@ -2,6 +2,7 @@ package logic
 
 import (
 	"fmt"
+
 	"go.uber.org/zap"
 
 	"github.com/xjian2021/bluebell/dao/mysql"
@@ -27,9 +28,7 @@ func CreatePost(input *models.CreatePostInput) (err error) {
 }
 
 func PostDetail(id int64) (output *models.PostDetailResData, err error) {
-	// TODO 联合查询
-
-	return nil, err
+	return mysql.GetPostDetail(id)
 }
 
 func PostList(input *models.PostListInput) (output []*models.Post, err error) {

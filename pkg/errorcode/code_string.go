@@ -15,23 +15,24 @@ func _() {
 	_ = x[CodeUserNotExist-1004]
 	_ = x[CodeInvalidPassword-1005]
 	_ = x[CodeInvalidToken-1006]
+	_ = x[CodeInvalidID-1007]
 }
 
 const (
 	_Code_name_0 = "未知错误成功"
-	_Code_name_1 = "无效参数用户已存在用户不存在密码错误无效token"
+	_Code_name_1 = "无效参数用户已存在用户不存在密码错误无效token无效id"
 )
 
 var (
 	_Code_index_0 = [...]uint8{0, 12, 18}
-	_Code_index_1 = [...]uint8{0, 12, 27, 42, 54, 65}
+	_Code_index_1 = [...]uint8{0, 12, 27, 42, 54, 65, 73}
 )
 
 func (i Code) String() string {
 	switch {
 	case 0 <= i && i <= 1:
 		return _Code_name_0[_Code_index_0[i]:_Code_index_0[i+1]]
-	case 1002 <= i && i <= 1006:
+	case 1002 <= i && i <= 1007:
 		i -= 1002
 		return _Code_name_1[_Code_index_1[i]:_Code_index_1[i+1]]
 	default:

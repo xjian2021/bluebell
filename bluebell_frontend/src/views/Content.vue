@@ -12,7 +12,7 @@
           </a>
         </div>
         <div class="l-container">
-            <h4 class="con-title">{{ post.title }}</h4>
+            <h4 class="con-title">【{{ post.community_name }}】{{ post.title }}</h4>
           <div class="con-info">{{ post.content }}</div>
           <div class="user-btn">
             <span class="btn-item">
@@ -22,12 +22,12 @@
         </div>
       </div>
 
-      <!-- <div class="comment">
+      <div class="comment">
         <div class="c-left">
           <div class="line"></div>
           <div class="c-arrow">
-                            <a class="vote"><span class="iconfont icon-up"></span></a>
-                            <a class="up down"></a>
+            <a class="vote"><span class="iconfont icon-up"></span></a>
+            <a class="up down"></a>
           </div>
         </div>
         <div class="c-right">
@@ -37,19 +37,22 @@
             <span class="num">· 5 hours ago</span>
           </div>
           <p
-            class="c-content"
-          >We're having the same experience in Yerevan, Armenia. Though you can see mountains all around the city on good days, now you can see even farther into Turkey and Iran. Every crag on the mountains around us is now clearer than ever.</p>
+              class="c-content"
+          >We're having the same experience in Yerevan, Armenia. Though you can see mountains all around the city on
+            good days, now you can see even farther into Turkey and Iran. Every crag on the mountains around us is now
+            clearer than ever.</p>
         </div>
-      </div> -->
+      </div>
+
     </div>
     <div class="right">
       <div class="topic-info">
         <h5 class="t-header"></h5>
         <div class="t-info">
           <a class="avatar"></a>
-          <span class="topic-name">b/{{ post.community_name }}</span>
+          <span class="topic-name">{{ post.author_username }}</span>
         </div>
-        <p class="t-desc">树洞 树洞 无限树洞的树洞</p>
+        <p class="t-desc">{{ post.introduction }}</p>
         <ul class="t-num">
           <li class="t-num-item">
             <p class="number">5.2m</p>
@@ -60,7 +63,7 @@
             <span class="unit">Members</span>
           </li>
         </ul>
-        <div class="date">Created Apr 10, 2008</div>
+        <div class="date">Created {{ post.create_time }}</div>
         <button class="topic-btn">JOIN</button>
       </div>
     </div>
