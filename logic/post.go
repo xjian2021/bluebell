@@ -2,7 +2,7 @@ package logic
 
 import (
 	"fmt"
-
+	"github.com/xjian2021/bluebell/dao/redis"
 	"go.uber.org/zap"
 
 	"github.com/xjian2021/bluebell/dao/mysql"
@@ -21,7 +21,12 @@ func CreatePost(input *models.CreatePostInput) (err error) {
 	}
 	id, err := mysql.CreatePost(newPost)
 	if err != nil {
-		return fmt.Errorf("CreatePost newPost:%+v err:%s", newPost, err.Error())
+		return fmt.Errorf("mysql CreatePost newPost:%+v err:%s", newPost, err.Error())
+	}
+
+	err = redis.CreatePost(id)
+	if err != nil {
+		return fmt.Errorf("redis CreatePost newPost:%+v err:%s", newPost, err.Error())
 	}
 	zap.S().Infof("new post id:%d", id)
 	return nil

@@ -10,6 +10,7 @@ const (
 	CodeInvalidPassword                    // 密码错误
 	CodeInvalidToken                       // 无效token
 	CodeInvalidID                          // 无效id
+	CodeVoteTimeExpired                    // 投票时间已过
 )
 
 type (
