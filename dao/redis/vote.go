@@ -52,7 +52,7 @@ func VoteForPost(userID, postID string, value float64) (err error) {
 
 	//根据上一次操作，来给本次操作进行结算(投票有效时间以及文章分数)
 	var (
-		diff     = math.Abs(ov - value)
+		diff     = math.Abs(ov - value) // 这里的好处是，哪怕用户不断重复操作，也不会有数据更新
 		pipeline = rdb.Pipeline()
 	)
 	if ov > value {
@@ -60,8 +60,12 @@ func VoteForPost(userID, postID string, value float64) (err error) {
 	} else {
 		op = 1
 	}
+	if diff*op == 0 {
+		return nil
+	}
 	pipeline.ZIncrBy(ctx, ptKey, diff*op*scorePerVote, postID)
-	pipeline.ZIncrBy(ctx, psKey, value, postID)
+	// TODO zset的score不会去到负数？
+	pipeline.ZIncrBy(ctx, psKey, diff*op, postID)
 	//更新最后一次操作
 	if value == 0 {
 		pipeline.HDel(ctx, vaKey, userID)

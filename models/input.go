@@ -26,8 +26,8 @@ type (
 	}
 
 	VoteInput struct {
-		PostID    string  `json:"post_id" binging:"required"`
-		Operating float64 `json:"operating" binding:"oneof=-1 0 1"`
+		PostID    string `json:"post_id" binging:"required"`
+		Operating int8   `json:"direction,string" binding:"oneof=-1 0 1"`
 		UserID    int64
 	}
 )

@@ -24,7 +24,7 @@ func CreatePost(input *models.CreatePostInput) (err error) {
 		return fmt.Errorf("mysql CreatePost newPost:%+v err:%s", newPost, err.Error())
 	}
 
-	err = redis.CreatePost(id)
+	err = redis.CreatePost(postID)
 	if err != nil {
 		return fmt.Errorf("redis CreatePost newPost:%+v err:%s", newPost, err.Error())
 	}

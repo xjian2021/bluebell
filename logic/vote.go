@@ -26,5 +26,5 @@ import (
    	TODO 在添加文章的接口上要加上生成文章可投票时间的缓存数据
 */
 func Vote(input *models.VoteInput) (err error) {
-	return redis.VoteForPost(strconv.Itoa(int(input.UserID)), input.PostID, input.Operating)
+	return redis.VoteForPost(strconv.Itoa(int(input.UserID)), input.PostID, float64(input.Operating))
 }
