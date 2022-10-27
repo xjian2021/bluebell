@@ -125,6 +125,7 @@ export default {
   methods: {
     selectOrder(order) {
       this.order = order;
+      this.lastPostID = 0
       this.getPostList()
     },
     goPublish() {

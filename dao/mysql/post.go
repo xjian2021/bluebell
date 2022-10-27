@@ -2,6 +2,8 @@ package mysql
 
 import (
 	"database/sql"
+	"github.com/jmoiron/sqlx"
+	"strings"
 
 	"github.com/xjian2021/bluebell/models"
 	"github.com/xjian2021/bluebell/pkg/errorcode"
@@ -26,11 +28,14 @@ func GetPostDetail(postID int64) (output *models.PostDetailResData, err error) {
 	return
 }
 
-func PostList(lastPostID, limit int64) (output []*models.Post, err error) {
-	sqlStr := "select post_id,community_id,title,content from post where post_id > ? limit ?"
-	err = db.Select(&output, sqlStr, lastPostID, limit)
-	if err == sql.ErrNoRows {
-		err = nil
+func PostList(postIDs []string, limit int64) (output []*models.Post, err error) {
+	sqlStr := "select post_id,community_id,title,content from post where post_id in (?) order by find_in_set(post_id,?) limit ?"
+	query, args, err := sqlx.In(sqlStr, postIDs, strings.Join(postIDs, ","), limit)
+	if err != nil {
+		return nil, err
 	}
+
+	query = db.Rebind(query)
+	err = db.Select(&output, query, args...)
 	return
 }

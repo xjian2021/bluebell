@@ -2,6 +2,11 @@ package models
 
 import "time"
 
+const (
+	OrderScore = "score"
+	OrderTime  = "time"
+)
+
 type Post struct {
 	ID          int64     `json:"id,string" db:"post_id"`
 	AuthorID    int64     `json:"author_id,string" db:"author_id"`

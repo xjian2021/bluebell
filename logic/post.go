@@ -2,12 +2,11 @@ package logic
 
 import (
 	"fmt"
-	"github.com/xjian2021/bluebell/dao/redis"
-	"go.uber.org/zap"
-
 	"github.com/xjian2021/bluebell/dao/mysql"
+	"github.com/xjian2021/bluebell/dao/redis"
 	"github.com/xjian2021/bluebell/models"
 	"github.com/xjian2021/bluebell/pkg/snowflake"
+	"go.uber.org/zap"
 )
 
 func CreatePost(input *models.CreatePostInput) (err error) {
@@ -37,5 +36,17 @@ func PostDetail(id int64) (output *models.PostDetailResData, err error) {
 }
 
 func PostList(input *models.PostListInput) (output []*models.Post, err error) {
-	return mysql.PostList(input.LastPostID, input.Limit)
+	postIDs, err := redis.GetPostIdListByOrder(input.Order, input.LastPostID, input.Limit)
+	if err != nil {
+		return nil, fmt.Errorf("redis GetPostIdListByOrder err:%s", err.Error())
+	}
+	//postIDs := make([]int64, len(postIDsStr), len(postIDsStr))
+	//for i, postIDStr := range postIDsStr {
+	//	postID, err := strconv.ParseInt(postIDStr, 10, 64)
+	//	if err != nil {
+	//		return nil, fmt.Errorf("ParseInt err:%s", err.Error())
+	//	}
+	//	postIDs[i] = postID
+	//}
+	return mysql.PostList(postIDs, input.Limit)
 }
