@@ -2,7 +2,9 @@ package routes
 
 import (
 	"net/http"
+	"time"
 
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 
 	"github.com/xjian2021/bluebell/controller"
@@ -15,6 +17,9 @@ import (
 func Setup() *gin.Engine {
 	r := gin.New()
 	r.Use(logger.GinLogger(), logger.GinRecovery(true), middlewares.LoadApiMeta)
+	r.GET("/ping", middlewares.RateLimit(2*time.Second, 1), func(c *gin.Context) {
+		c.String(http.StatusOK, "ok %s", time.Now().String())
+	})
 	g := r.Group("/api/v1")
 	g.GET("/version", func(c *gin.Context) {
 		c.String(http.StatusOK, "version:%s", settings.C.Version)
@@ -37,5 +42,6 @@ func Setup() *gin.Engine {
 		g.GET("/posts", controller.PostListHandler)
 		g.POST("/vote", controller.VoteHandler)
 	}
+	pprof.Register(r)
 	return r
 }

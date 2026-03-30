@@ -37,7 +37,7 @@ func main() {
 		zap.L().Fatal("snowflake.Init", zap.Error(err))
 	}
 
-	// 初始化validator全局翻译器
+	// 初始化validator全局翻译器test
 	if err := validatorPkg.InitTrans(settings.C.Locale); err != nil {
 		zap.L().Fatal("validator-trans.InitTrans", zap.Error(err))
 	}
