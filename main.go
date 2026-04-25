@@ -26,7 +26,6 @@ func main() {
 	// 初始化日志
 	logger.Init(settings.C.Log)
 	defer zap.L().Sync()
-	zap.L().Info("loaded config", zap.Any("config", settings.SafeConfig()))
 	// 初始化mysql
 	mysql.Init(settings.C.Mysql)
 	defer mysql.Close()
