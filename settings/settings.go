@@ -81,3 +81,49 @@ func Init() {
 		}
 	})
 }
+
+func SafeConfig() map[string]interface{} {
+	return map[string]interface{}{
+		"name":       C.Name,
+		"mode":       C.Mode,
+		"version":    C.Version,
+		"start_time": C.StartTime,
+		"locale":     C.Locale,
+		"port":       C.Port,
+		"machine_id": C.MachineId,
+		"log": map[string]interface{}{
+			"log_level":    C.Log.LogLevel,
+			"log_filename": C.Log.LogFilename,
+			"err_level":    C.Log.ErrLevel,
+			"err_filename": C.Log.ErrFilename,
+			"filepath":     C.Log.Filepath,
+			"max_size":     C.Log.MaxSize,
+			"max_age":      C.Log.MaxAge,
+			"max_backups":  C.Log.MaxBackups,
+			"compress":     C.Log.Compress,
+		},
+		"mysql": map[string]interface{}{
+			"host":           C.Mysql.Host,
+			"port":           C.Mysql.Port,
+			"user":           C.Mysql.User,
+			"password":       maskPassword(C.Mysql.Password),
+			"db_name":        C.Mysql.Dbname,
+			"max_open_conns": C.Mysql.MaxOpenConns,
+			"max_idle_conns": C.Mysql.MaxIdleConns,
+		},
+		"redis": map[string]interface{}{
+			"host":      C.Redis.Host,
+			"port":      C.Redis.Port,
+			"password":  maskPassword(C.Redis.Password),
+			"db":        C.Redis.Db,
+			"pool_size": C.Redis.PoolSize,
+		},
+	}
+}
+
+func maskPassword(password string) string {
+	if password == "" {
+		return ""
+	}
+	return "******"
+}
